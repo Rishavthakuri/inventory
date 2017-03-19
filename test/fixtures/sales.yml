@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  unit_sell_price: MyString
+  quantity: 1
+  cash_credit: MyString
+  customer_id: 1
+
+two:
+  item_id: 1
+  unit_sell_price: MyString
+  quantity: 1
+  cash_credit: MyString
+  customer_id: 1

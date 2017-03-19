@@ -1,0 +1,93 @@
+<%= form_for @item, :html => {:class => "form-horizontal"} do |f| %>
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/items">Items</a></li>
+      </ol>
+    </div>
+    <% if @item.errors.any? %>
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+    <div class="well " style="width: 500px;margin-left: 15px;">
+      <div class="form-group">
+        <label class="control-label col-md-4" for="name">Name</label>
+        <div class="col-md-6">
+          <%= f.text_field :name, :class => "form-control", :id => "item_code", :placeholder => "Enter Name" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="unit_id">Unit</label>
+        <div class="col-md-6">
+          <%= f.collection_select :unit_id, Unit.order(:name), :id, :name, {prompt: "select category"}, {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="unit_id">Item Code</label>
+        <div class="col-md-6">
+          <%= f.text_field :item_code, :class => "form-control", :id => "item_code", :placeholder => "Enter Item Code" %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="item_group_id">Item Group</label>
+        <div class="col-md-6">
+          <%= f.collection_select :item_group_id, ItemGroup.order(:name), :id, :name, {prompt: "select category"}, {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="description">Description</label>
+        <div class="col-md-6">
+          <%= f.text_area :description, :class => "form-control", :id => "description", :placeholder => "Enter Description of Item" %>
+        </div>
+      </div>
+
+
+      <%= f.fields_for :stock do  |s|%>
+          <div class="form-group">
+            <label class="control-label col-md-4" for="description"> Quantity</label>
+            <div class="col-md-6">
+              <%=s.text_field :quantity,:class => "form-control", :placeholder => "Enter Quantity" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-4" for="description"> Unit Price</label>
+            <div class="col-md-6">
+              <%=s.text_field :unit_price,:class => "form-control", :id => "Unit Price", :placeholder => "Enter Unit Price" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-4" for="description"> Estimated Selling Price</label>
+            <div class="col-md-6">
+              <%=s.text_field :est_sell_price,:class => "form-control", :id => "est_selling_price", :placeholder => "Enter Est.Selling Price" %>
+            </div>
+          </div>
+      <% end %>
+
+      <div class="form-group">
+        <div class="actions">
+          <div class="control label col-md-10">
+            <%= f.submit "Add", :class => "btn btn-primary " %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<script>
+
+  $('#datepicker').datepicker({
+    format: "yyyy/mm/dd",
+  }).on('changeDate', function (e) {
+    $(this).datepicker('hide');
+
+  });
+</script>

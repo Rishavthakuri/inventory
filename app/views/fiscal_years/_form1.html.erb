@@ -1,0 +1,54 @@
+<%= form_for @fiscal_year, :html => {:class => "form-horizontal"} do |f| %>
+    <div class="row">
+        <ol class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/fiscal_years">Fiscal Year</a></li>
+          <li><a href="/fiscal_years/new">New</a></li>
+        </ol>
+    </div>
+    <div class="well " style="width: 500px;margin-left: 15px;">
+      <div class="form-group">
+        <label class="control-label col-md-4" for="name">Name</label>
+        <div class="col-md-6">
+          <%= f.text_field :name,:class => "form-control ", :id => "Name", :placeholder => "Enter Fiscal Year Name"  %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-4" for="startdate">Start Date</label>
+        <div class="col-md-6">
+          <%= f.text_field :start_date, :class => "form-control ", :id =>"datepicker", :placeholder => "YYYY/MM/DD" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-4" for="enddate">End Date</label>
+        <div class="col-md-6">
+          <%= f.text_field :end_date, :class => "form-control ", :id =>"datepicker1", :placeholder => "YYYY/MM/DD" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="actions">
+          <div class="control label col-md-10">
+            <%= f.submit "Add", :class => "btn btn-primary " %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% end %>
+
+<script>
+
+  $('#datepicker').datepicker({
+    format: "yyyy/mm/dd",
+  }).on('changeDate', function(e){
+    $(this).datepicker('hide');
+
+  });
+</script>
+<script>
+  $('#datepicker1').datepicker({
+    format: "yyyy/mm/dd",
+  }).on('changeDate', function(e){
+    $(this).datepicker('hide');
+  });
+</script>

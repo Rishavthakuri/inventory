@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - inventory_devlopment@localhost" uuid="41ba487a-c899-4771-a161-bb96dc5671cf">
+      <secret-storage>master_key</secret-storage>
+      <user-name>rails_user</user-name>
+      <schema-pattern>inventory_devlopment.pg_catalog inventory_devlopment.public</schema-pattern>
+      <default-schemas>inventory_devlopment.public</default-schemas>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,59 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li> <a href="/stocks">Stock</a></li>
+    <li><a href="">Show</a>
+  </ol>
+</div>
+
+<div class="well" style="width: 500px;margin-left:15px;">
+  <div class="form-horizontal">
+    <div class="form-group">
+    <div class="col-md-4">
+      Item Name
+    </div>
+    <div class="col-md-4">
+      <%= @stock.item.name%>
+    </div>
+  </div>
+
+  <div class="form-group ">
+    <div class="col-md-4">
+    Quantity
+    </div>
+    <div class="col-md-4">
+      <%= @stock.quantity%>
+    </div>
+  </div>
+
+
+  <div class="form-group ">
+    <div class="col-md-4">
+        Item Group Name
+    </div>
+    <div class="col-md-4">
+      <%= @stock.item.item_group.name%>
+    </div>
+    </div>
+
+
+    <div class="form-group ">
+      <div class="col-md-4">
+        UnitPrice
+      </div>
+      <div class="col-md-4">
+        <%= @stock.unit_price%>
+      </div>
+    </div>
+
+
+    <div class="form-group ">
+      <div class="col-md-4">
+        Est. Sell price
+      </div>
+      <div class="col-md-4">
+        <%= @stock.est_sell_price%>
+      </div>
+    </div>
+</div>
+</div>

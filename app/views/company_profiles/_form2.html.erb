@@ -1,0 +1,101 @@
+<%= form_for @company_profile, :html => {:class => "form-horizontal"} do |f| %>
+
+    <div class="row">
+        <ol class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/company_profiles">Company Profile</a></li>
+        </ol>
+    </div>
+    <% if @company_profile.errors.any? %>
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+    <div class="well " style="width: 500px;margin-left: 15px;">
+      <div class="form-group">
+        <label class="control-label col-md-4" for="name">Name</label>
+        <div class="col-md-6">
+          <%= f.text_field :name,:class => "form-control ", :id => "Name", :placeholder => "Enter Comapany Name"  %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="address">Address</label>
+        <div class="col-md-6">
+          <%= f.text_field :address, :class => "form-control", :id =>"address", :placeholder => "Enter Company Address" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="vdc_mun">VDC/Muncipality</label>
+        <div class="col-md-6">
+          <%= f.text_field :vdc_mun, :class => "form-control", :id =>"address", :placeholder => "Enter VDC or Muncipality" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="address">Ward No</label>
+        <div class="col-md-6">
+          <%= f.text_field :ward_no, :class => "form-control", :id =>"ward_no", :placeholder => "Enter Ward No" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="phone_no">Phone No</label>
+        <div class="col-md-6">
+          <%= f.text_field :phone_no, :class => "form-control", :id =>"phone_no", :placeholder => "Enter Company Phone No" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="vat_pan_no">VAT Pan No</label>
+        <div class="col-md-6">
+          <%= f.text_field :vat_pan_no, :class => "form-control", :id =>"vat_pan_no", :placeholder => "Enter VAT Pan No" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="logo">Logo</label>
+        <div class="col-md-6">
+          <%= f.file_field :logo, :id =>"logo", :placeholder => "Enter Logo" %>
+          <% if f.object.logo? %>
+              <%= image_tag f.object.logo.thumb.url %><br>
+              <%= f.check_box :remove_logo %>
+              <%= f.label :remove_logo  %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="address">District</label>
+        <div class="col-md-6">
+          <%= f.text_field :district, :class => "form-control", :id =>"district", :placeholder => "Enter District" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="address">Zone</label>
+        <div class="col-md-6">
+          <%= f.text_field :zone, :class => "form-control", :id =>"district", :placeholder => "Enter Disctrict" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-4" for="unit_id">Current Fiscal Year</label>
+        <div class="col-md-6">
+          <%= f.collection_select :fiscal_year_id, FiscalYear.all,:id , :name,{prompt:"select Current fiscal Year"}, {class: "form-control"} %>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="actions">
+          <div class="control label col-md-11">
+            <%= f.submit "Update", :class => "btn btn-primary " %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

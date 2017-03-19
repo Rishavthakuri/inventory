@@ -1,0 +1,56 @@
+
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/item_groups">Item Group</a></li>
+  </ol>
+</div>
+<div class="row">
+  <div class="col-md-offset-9">
+    <a  href="/item_groups/new"> <button type="submit" class="btn btn-primary btn-md"><i class="fa fa-plus" aria-hidden="true"></i> New</button></a>
+  </div>
+  <br>
+  <div class="col-sm-10" style="margin-left: 15px;">
+    <table class="table ">
+      <tr style="background-color: #ebccd1;">
+        <th> S.N</th>
+        <th> Item Group Name</th>
+        <th>Parent Name</th>
+        <th>Actions</th>
+      </tr>
+      <% @item_group.each_with_index do |item_group,i| %>
+          <tr>
+            <td> <%= (@page.to_i - 1)*5+i+1 %> </td>
+            <td>     <%= item_group.name%></td>
+            <td>    <%=item_group.parent_id%> </td>
+
+            <td class="col-md-3">
+              <a  data-toggle="tooltip" data-placement="left" title="View" href="<%= item_group_path(item_group)%>">
+
+                <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+                </span>
+              </a>
+              &nbsp  &nbsp<a data-toggle="tooltip" data-placement="top" title="Edit" href="<%= edit_item_group_path(item_group)%>">
+                  <span>
+                    <i class="fa fa-pencil-square fa-lg" aria-hidden="true"></i>
+                  </span>
+            </a>
+              &nbsp  &nbsp <a data-confirm="Are you sure to delete"  rel="nofollow" data-method="delete" data-toggle="tooltip" data-placement="right" title="Delete" href="<%= item_group_path(item_group)%>">
+              <span >
+                <i class="fa fa-trash fa-lg "></i>
+              </span>
+            </a>
+            </td>
+          </tr>
+
+      <% end %>
+    </table>
+    <%= will_paginate @item_group, renderer:BootstrapPagination:: Rails %>
+  </div>
+</div>
+</div>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>

@@ -1,0 +1,39 @@
+
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/customers">customers</a></li>
+  </ol>
+</div>
+<div class="col-md-offset-9">
+  <a  href="/customers/new"> <button type="submit" class="btn btn-primary btn-md"><i class="fa fa-plus" aria-hidden="true"></i> New</button></a>
+</div>
+<br>
+<div class="col-sm-10">
+  <table class="table ">
+
+    <tr style="background-color: #ebccd1;">
+      <th> S.N</th>
+      <th> Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+    </tr>
+    <% @customer.each_with_index do |customer,i| %>
+        <tr>
+          <td> <%= (@page.to_i - 1)*5+i+1 %> </td>
+          <td>     <%= customer.name%></td>
+          <td>    <%=customer.address%> </td>
+          <td>    <%=customer.phone_number%> </td>
+        </tr>
+
+    <% end %>
+  </table>
+
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
